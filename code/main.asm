@@ -2,13 +2,10 @@ cpu 8086
 org 0xF8000
 
 start:
-    mov al, 0x1
+    mov al, 1h
     out 0, al
-    call delay
+    
 loop:
-    out 0, al
-    add al, 1
-    call delay
     jmp loop
 
 
