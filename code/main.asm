@@ -14,12 +14,19 @@ loop:
 
 delay:
     push dx
+    push cx
+    mov cx, 0xFF
+delay_loop1:
     mov dx, 0xFF
-delay_loop:
+delay_loop2:
     sub dx, 1
     cmp dx, 0
-    jne delay_loop
+    jne delay_loop2
+    sub cx, 1
+    cmp cx, 0
+    jne delay_loop1
     pop dx
+    pop cx
     ret
 
     
