@@ -1,3 +1,1 @@
-nasm -f bin main.asm -o bios.bin 
-
-
+nasm -f bin rom.asm -o main.bin  
