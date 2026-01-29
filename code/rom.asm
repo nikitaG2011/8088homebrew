@@ -1,39 +1,30 @@
-cpu 8086
-org 0xF8000
+.8086
+
+ROM SEGMENT USE16
+org 0F8000h
 
 start:
-    mov al, 1h
-    out 0, al
-    
-loop:
-    jmp loop
+    cli
+    xor ax, ax
+    mov ss, ax
+    mov sp, 0FFFEh
+    mov ds, ax
+    mov es, ax
 
+    mov dx, 0
+    mov al, 0FFh
+    out dx, al
+loop1:
+    jmp loop1
 
-delay:
-    push dx
-    push cx
-    mov cx, 0xFF
-delay_loop1:
-    mov dx, 0xFF
-delay_loop2:
-    sub dx, 1
-    cmp dx, 0
-    jne delay_loop2
-    sub cx, 1
-    cmp cx, 0
-    jne delay_loop1
-    pop dx
-    pop cx
-    ret
+org 0FFFF0h
 
-    
+    mov dx, 0
+    mov al, 55h
+    out dx, al
 
+db 0EAh, 00h, 00h, 80h, 0Fh
 
+ROM ENDS
 
-
-times (0x7FF0 - ($ - $$)) db 0x90
-
-reset_vector:
-    jmp start  
-
-times (0x8000 - ($ - $$)) db 0x0
+end

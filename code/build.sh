@@ -1,0 +1,1 @@
+jwasm -bin rom.asm

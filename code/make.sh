@@ -1,1 +1,0 @@
-nasm -f bin rom.asm -o main.bin  
