@@ -10,6 +10,7 @@ start:
     mov sp, 0xFFFE  ; Stack at top of segment
     
     ; --- Your code starts here ---
-    mov al, '!'
+    mov al, 0xAA
+    out 0, al
     hlt
     times 32752 - ($ - $$) db 0x90 ; Pad with NOPs up to the vector space
