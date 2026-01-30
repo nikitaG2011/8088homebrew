@@ -9,9 +9,10 @@ start:
     mov ss, ax
     mov sp, 0xFFFE  ; Stack at top of segment
     
-    ; --- Your code starts here ---
-    mov al, 0xAA
+    mov al, 0x55
     out 0, al
     loop1:
     jmp loop1
-    times 32752 - ($ - $$) db 0x90 ; Pad with NOPs up to the vector space
+
+    ; end of code space
+    times 32752 - ($ - $$) db 0x90
