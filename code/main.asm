@@ -12,5 +12,6 @@ start:
     ; --- Your code starts here ---
     mov al, 0xAA
     out 0, al
-    hlt
+    loop1:
+    jmp loop1
     times 32752 - ($ - $$) db 0x90 ; Pad with NOPs up to the vector space
