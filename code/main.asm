@@ -11,15 +11,9 @@ start:
     mov ss, ax
     mov sp, 0xFFFE  ; Stack at top of segment
 
-    mov al, 0
-    out 1, al 
-    mov al, 00011111b ;baud rate 19,200
-    out 3, al
-    mov al, 00001011b ; no parity no echo, dtr low
-    out 2, al
-
-    mov al, 'A'
+    mov al, 0x55
     out 0, al
+
     loop1:
 
     jmp loop1
