@@ -1,9 +1,10 @@
-int DATA[] = {3,4,5,6,7,8,9,10};
+int DATA[] = {10,9,8,7,6,5,4,3};
+int adata[] = {0,0,0,0,0,0,0,0};
 int IO_M = 2;
 
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(19200);
   
   pinMode(IO_M, INPUT_PULLUP);
 
@@ -18,10 +19,11 @@ void loop() {
 }
 
 void intr(){
-  unsigned int data = 0;
   for (int n = 0; n < 8; n += 1) {
-    int bit = digitalRead(DATA[n]) ? 1 : 0;
-    Serial.print(bit);
-    data = (data << 1) + bit;
+    adata[n] = digitalRead(DATA[n]);
   }
+  for (int n = 0; n < 8; n += 1) {
+    Serial.print(adata[n]);
+  }
+  
 }
