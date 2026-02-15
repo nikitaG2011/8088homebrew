@@ -11,8 +11,12 @@ start:
     mov ss, ax
     mov sp, 0xFFFE  ; Stack at top of segment
 
+    mov al, 11111111b ; set port B to output
+    out 2, al
+    
     mov al, 0x55
     out 0, al
+
 
     loop1:
 
