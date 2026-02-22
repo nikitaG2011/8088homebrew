@@ -29,6 +29,7 @@ delay_loop:
     sub ax, 1
     cmp ax, 0
     jne delay_loop
+    pop ax
     ret
 
 
