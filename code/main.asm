@@ -2,7 +2,9 @@
 BITS 16
 ORG 0x8000
 
-;uart starts at i/o 0
+LCD_CMD     EQU 0x00
+LCD_DATA    EQU 0x01
+
 
 start:
     mov ax, 0xF000  ; Setup segments
