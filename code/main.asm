@@ -6,60 +6,69 @@ LCD_CMD     EQU 0x00
 LCD_DATA    EQU 0x01
 
 
-start:
-    mov ax, 0xF000  ; Setup segments
-    mov ds, ax
-    mov ss, ax
-    mov sp, 0xFFFE  ; Stack at top of segment
+
 
 LCD_CMD     EQU 0x00
 LCD_DATA    EQU 0x01
 
 init:
         
-        call lcd_delay
-        mov al, 0x30
-        out LCD_CMD, al
-        call lcd_delay
-        mov al, 0x30
-        out LCD_CMD, al
-        call lcd_delay
-        mov al, 0x38    ; function set
-        out LCD_CMD, al
-        call lcd_delay
-        mov al, 0x08    ; display off
-        out LCD_CMD, al
-        call lcd_delay
-        mov al, 0x01    ; clear display
-        out LCD_CMD, al
-        call lcd_delay
-        mov al, 0x02    ; return home
-        out LCD_CMD, al
-        call lcd_delay
-        mov al, 0x06    ; entry mode set
-        out LCD_CMD, al
-        call lcd_delay
-        mov al, 0x0c    ; display on, no cursor
-        out LCD_CMD, al
+        mov ax, 0x7000
+        mov ss, ax
+        xor sp, sp
 
+        push cs
+        pop es
+start:
+; push the length of the string on stack ("len")
+        mov ax, hello_str_end - hello_str
+        push ax
+; push the string address of the string on stack ("str")
+        mov ax, hello_str
+        push ax
 
-        mov al, 'D'
-        out LCD_DATA, al
+; call find_space() in the C-style
+        call find_space
+; tidy up the parameters (2 * 2 bytes)
+        add sp, 4
 
         jmp $
 
 
-lcd_delay:
-                    push cx
-                    mov cx, 0x0100
-lcd_delay_loop:     dec cx
-                    jnz lcd_delay_loop
-                    pop cx
-                    ret
+;   C declaration:
+;   int16_t find_space(const char* str, uint16_t len);
+find_space:
+        push bp
+        mov bp, sp
+
+        sub sp, 2
+
+        push di
+        mov di, [bp + 4]    ; load "str" to DI
+        mov cx, [bp + 6]    ; load "len" to CX
+        mov [bp - 2], di    ; save "str" to a local variable
+
+        mov al, ' '
+        repne scasb
+        je .1               ; jump over if found
+        mov ax, -1
+        jmp .ret
+.1:
+        mov ax, di
+        sub ax, [bp - 2]
+        dec ax
+.ret:
+        pop di
+
+        mov sp, bp
+        pop bp
+        ret
 
 hello_str:
-        db 'Hello, World!'
+        DB "Hello World!"
 hello_str_end:
+
+
 
     ; end of code space
     times 32752 - ($ - $$) db 0x90
