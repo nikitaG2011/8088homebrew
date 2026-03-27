@@ -20,13 +20,20 @@ Keypad customKeypad = Keypad( makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS
 
 void setup(){
   DDRB = B00001111; 
+  pinMode(13, OUTPUT);
+  pinMode(12, INPUT);
 }
   
 void loop(){
   int customKey = customKeypad.getKey();
-  
+  int istate = digitalRead(12);
+  if (istate == HIGH) {
+    // turn LED on:
+    digitalWrite(13, LOW);
+  }
   if (customKey){
     PORTB = customKey;
+    digitalWrite(13, HIGH);
 
     
   }
