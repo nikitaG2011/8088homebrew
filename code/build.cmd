@@ -1,4 +1,4 @@
-del bios.bn
+del bios.bin
 del main.bin
 del reset.bin
 nasm -f bin main.asm -o main.bin
