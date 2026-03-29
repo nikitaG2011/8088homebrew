@@ -75,7 +75,7 @@ LCD_DATA    EQU 0x01
 .9:     dec cx
         jnz .9
 
-        mov al, 'T'
+        mov al, 'P'
         out LCD_DATA, al
 
         mov cx, 0x0010
@@ -89,14 +89,14 @@ LCD_DATA    EQU 0x01
 .11:    dec cx
         jnz .11
 
-        mov al, 'S'
+        mov al, 'E'
         out LCD_DATA, al
 
         mov cx, 0x0010
 .12:    dec cx
         jnz .12
 
-        mov al, 'T'
+        mov al, 'P'
         out LCD_DATA, al
 loop:
         jmp loop
