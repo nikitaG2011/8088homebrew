@@ -12,7 +12,7 @@ init:
         pop es
 start:
        LCD_CMD     EQU 0x00
-LCD_DATA    EQU 0x01
+       LCD_DATA    EQU 0x01
 
 
         mov cx, 0x0600
