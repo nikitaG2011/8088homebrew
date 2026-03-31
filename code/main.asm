@@ -15,10 +15,11 @@ start:
        LCD_DATA    EQU 0x01
 
 
-        mov cx, 0x0600
-.1:     dec cx
-        jnz .1
 
+
+        mov cx, 0x0010
+.1:    dec cx
+        jnz .12
         mov al, 0x30
         out LCD_CMD, al
 
@@ -100,6 +101,12 @@ start:
         out LCD_DATA, al
 loop:
         jmp loop
+
+delay_lcd:
+                        mov cx, 0x0600
+delay_loop_lcd:         dec cx
+                        jnz delay_loop_lcd
+                        ret
 
 
 
