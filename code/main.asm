@@ -2,113 +2,88 @@
 BITS 16
 ORG 0x8000
 
+
+LCD_CMD     EQU 0x00
+LCD_DATA    EQU 0x01
+
 init:
-        
         mov ax, 0x7000
         mov ss, ax
         xor sp, sp
 
         push cs
         pop es
-start:
-       LCD_CMD     EQU 0x00
-       LCD_DATA    EQU 0x01
 
-
-
-
-        mov cx, 0x0010
-.1:    dec cx
-        jnz .12
+        call lcd_delay
         mov al, 0x30
         out LCD_CMD, al
 
-        mov cx, 0x0100
-.2:     dec cx
-        jnz .2
+        call lcd_delay
 
         mov al, 0x30
         out LCD_CMD, al
 
-        mov cx, 0x0020
-.3:     dec cx
-        jnz .3
+        call lcd_delay
 
         mov al, 0x38    ; function set
         out LCD_CMD, al
 
-        mov cx, 0x0010
-.4:     dec cx
-        jnz .4
+        call lcd_delay
 
         mov al, 0x08    ; display off
         out LCD_CMD, al
 
-        mov cx, 0x0010
-.5:     dec cx
-        jnz .5
+        call lcd_delay
 
         mov al, 0x01    ; clear display
         out LCD_CMD, al
 
-        mov cx, 0x0200
-.6:     dec cx
-        jnz .6
+        call lcd_delay
 
         mov al, 0x02    ; return home
         out LCD_CMD, al
 
-        mov cx, 0x0200
-.7:     dec cx
-        jnz .7
+        call lcd_delay
 
         mov al, 0x06    ; entry mode set
         out LCD_CMD, al
 
-        mov cx, 0x0010
-.8:     dec cx
-        jnz .8
+        call lcd_delay
 
         mov al, 0x0c    ; display on, no cursor
         out LCD_CMD, al
 
-        mov cx, 0x0010
-.9:     dec cx
-        jnz .9
+        call lcd_delay
 
-        mov al, 'P'
+        mov al, 'T'
         out LCD_DATA, al
 
-        mov cx, 0x0010
-.10:    dec cx
-        jnz .10
+        call lcd_delay
 
         mov al, 'E'
         out LCD_DATA, al
 
-        mov cx, 0x0010
-.11:    dec cx
-        jnz .11
+        call lcd_delay
 
-        mov al, 'E'
+        mov al, 'S'
         out LCD_DATA, al
 
-        mov cx, 0x0010
-.12:    dec cx
-        jnz .12
+        call lcd_delay
 
-        mov al, 'P'
+        mov al, 'T'
         out LCD_DATA, al
+
 loop:
         jmp loop
+        hlt
 
-delay_lcd:
+
+
+lcd_delay:
                         mov cx, 0x0600
-delay_loop_lcd:         dec cx
-                        jnz delay_loop_lcd
+lcd_delay_loop:         dec cx
+                        jnz lcd_delay_loop
                         ret
-
-
 
     ; end of code space
     times 32752 - ($ - $$) db 0x90
