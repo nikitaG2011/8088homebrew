@@ -3,7 +3,7 @@
 BITS 16
 ORG 0x8000
 
-%include "functions.asm"
+
 
 LCD_CMD     EQU 0x00
 LCD_DATA    EQU 0x01
@@ -17,36 +17,22 @@ init:
         pop es
 code:
 
-        call lcd_start
+    call lcd_start
 
         
-
-
-
-	MOV CX, END_MESSAGE - MESSAGE
-	MOV AX, CS
-	MOV DS, AX
-	MOV BX, MESSAGE
-
-MESS_LOOP:
-	MOV AL, [BX]
-	INC BX
 	call lcd_delay
+	MOV AL, 'A'
 	OUT LCD_DATA, AL
-	LOOP MESS_LOOP
-	RET
 
 
-loUop:
-    jmp loUop
+
+loop:
+    jmp loop
     hlt
 
-MESSAGE:
-DB "HELLORLD!"
-END_MESSAGE:
 
 
-
+%include "functions.asm"
     ; end of code space
     times 32752 - ($ - $$) db 0x90
 reset_vector:
