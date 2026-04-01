@@ -17,7 +17,7 @@ init:
         call lcd_delay
         mov al, 0x30
         out LCD_CMD, al
-
+		
         call lcd_delay
 
         mov al, 0x30
@@ -55,7 +55,7 @@ init:
 
         call lcd_delay
 
-        mov al, 'T'
+        mov al, 'H'
         out LCD_DATA, al
 
         call lcd_delay
@@ -65,13 +65,52 @@ init:
 
         call lcd_delay
 
-        mov al, 'S'
+        mov al, 'L'
+        out LCD_DATA, al
+		
+		call lcd_delay
+		
+		        mov al, 'L'
+        out LCD_DATA, al
+
+
+        call lcd_delay
+
+        mov al, 'O'
+        out LCD_DATA, al
+		
+		call lcd_delay
+
+        mov al, '_'
         out LCD_DATA, al
 
         call lcd_delay
 
-        mov al, 'T'
+        mov al, 'W'
         out LCD_DATA, al
+
+        call lcd_delay
+
+        mov al, 'O'
+        out LCD_DATA, al
+
+        call lcd_delay
+
+        mov al, 'R'
+        out LCD_DATA, al
+
+        call lcd_delay
+
+        mov al, 'L'
+        out LCD_DATA, al
+
+        call lcd_delay
+
+        mov al, 'D'
+        out LCD_DATA, al
+
+        call lcd_delay
+
 
 loop:
         jmp loop
@@ -87,3 +126,7 @@ lcd_delay_loop:         dec cx
 
     ; end of code space
     times 32752 - ($ - $$) db 0x90
+reset_vector:
+    jmp 0xF000:0x8000 ; Jump back to the 'start' label in main.asm
+    times 16 - ($ - reset_vector) db 0 ; Final 16 bytes
+
