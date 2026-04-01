@@ -1,7 +1,9 @@
 ; main.asm
+
 BITS 16
 ORG 0x8000
 
+%include "functions.asm"
 
 LCD_CMD     EQU 0x00
 LCD_DATA    EQU 0x01
@@ -13,45 +15,9 @@ init:
 
         push cs
         pop es
+code:
 
-        call lcd_delay
-        mov al, 0x30
-        out LCD_CMD, al
-		
-        call lcd_delay
-
-        mov al, 0x30
-        out LCD_CMD, al
-
-        call lcd_delay
-
-        mov al, 0x38    ; function set
-        out LCD_CMD, al
-
-        call lcd_delay
-
-        mov al, 0x08    ; display off
-        out LCD_CMD, al
-
-        call lcd_delay
-
-        mov al, 0x01    ; clear display
-        out LCD_CMD, al
-
-        call lcd_delay
-
-        mov al, 0x02    ; return home
-        out LCD_CMD, al
-
-        call lcd_delay
-
-        mov al, 0x06    ; entry mode set
-        out LCD_CMD, al
-
-        call lcd_delay
-
-        mov al, 0x0c    ; display on, no cursor
-        out LCD_CMD, al
+        call lcd_start
 
         call lcd_delay
 
@@ -112,17 +78,24 @@ init:
         call lcd_delay
 
 
+
+MOV CX, END_MESSAGE - MESSAGE
+MOV AX, CS
+
+
+
+
+
+
 loop:
         jmp loop
         hlt
 
+MESSAGE:
+DB "HELLORLD!"
+END_MESSAGE:
 
 
-lcd_delay:
-                        mov cx, 0x0600
-lcd_delay_loop:         dec cx
-                        jnz lcd_delay_loop
-                        ret
 
     ; end of code space
     times 32752 - ($ - $$) db 0x90
