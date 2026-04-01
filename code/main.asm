@@ -19,77 +19,27 @@ code:
 
         call lcd_start
 
-        call lcd_delay
-
-        mov al, 'H'
-        out LCD_DATA, al
-
-        call lcd_delay
-
-        mov al, 'E'
-        out LCD_DATA, al
-
-        call lcd_delay
-
-        mov al, 'L'
-        out LCD_DATA, al
-		
-		call lcd_delay
-		
-		        mov al, 'L'
-        out LCD_DATA, al
-
-
-        call lcd_delay
-
-        mov al, 'O'
-        out LCD_DATA, al
-		
-		call lcd_delay
-
-        mov al, '_'
-        out LCD_DATA, al
-
-        call lcd_delay
-
-        mov al, 'W'
-        out LCD_DATA, al
-
-        call lcd_delay
-
-        mov al, 'O'
-        out LCD_DATA, al
-
-        call lcd_delay
-
-        mov al, 'R'
-        out LCD_DATA, al
-
-        call lcd_delay
-
-        mov al, 'L'
-        out LCD_DATA, al
-
-        call lcd_delay
-
-        mov al, 'D'
-        out LCD_DATA, al
-
-        call lcd_delay
+        
 
 
 
-MOV CX, END_MESSAGE - MESSAGE
-MOV AX, CS
+	MOV CX, END_MESSAGE - MESSAGE
+	MOV AX, CS
+	MOV DS, AX
+	MOV BX, MESSAGE
+
+MESS_LOOP:
+	MOV AL, [BX]
+	INC BX
+	call lcd_delay
+	OUT LCD_DATA, AL
+	LOOP MESS_LOOP
+	RET
 
 
-
-
-
-
-loop:
-        jmp loop
-        hlt
+loUop:
+    jmp loUop
+    hlt
 
 MESSAGE:
 DB "HELLORLD!"
