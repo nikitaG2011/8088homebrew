@@ -21,7 +21,10 @@ code:
 
         
 	call lcd_delay
-	MOV AL, 'A'
+	MOV AL, 'B'
+	OUT LCD_DATA, AL
+	call lcd_delay
+	MOV AL, 'a'
 	OUT LCD_DATA, AL
 
 
