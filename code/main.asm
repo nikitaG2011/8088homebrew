@@ -18,22 +18,36 @@ init:
 code:
 
     call lcd_start
+; set the index register:
+        mov     si, 0
 
-        
-	call lcd_delay
-	MOV AL, 'B'
-	OUT LCD_DATA, AL
-	call lcd_delay
-	MOV AL, 'a'
-	OUT LCD_DATA, AL
+next_char:
 
+; get current character:
+        mov     al, msg[si]
+; is it zero?
+; if so stop printing:
+        cmp     al, 0           
+        je      end_printing
 
+; print character in teletype mode:
+        call lcd_delay
+	    MOV AL, 'a'
+       	OUT LCD_DATA, AL
+; update index register by 1:
+        inc     si
+
+; go back to print another char:
+        jmp     next_char
+
+end_printing:
 
 loop:
     jmp loop
     hlt
 
 
+msg db 'Hello, world!', 0
 
 %include "functions.asm"
     ; end of code space

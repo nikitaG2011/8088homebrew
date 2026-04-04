@@ -1,4 +1,6 @@
 lcd_start:
+    push ax
+        
 		call lcd_delay
         mov al, 0x30
         out LCD_CMD, al
@@ -37,12 +39,15 @@ lcd_start:
 
         mov al, 0x0c    ; display on, no cursor
         out LCD_CMD, al
-		
-		ret
+
+        pop ax
+        ret
 		
 		
 lcd_delay:
+                        push cx
                         mov cx, 0x0600
 lcd_delay_loop:         dec cx
                         jnz lcd_delay_loop
+                        pop cx
                         ret
