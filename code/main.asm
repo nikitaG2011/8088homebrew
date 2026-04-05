@@ -32,7 +32,6 @@ next_char:
 
 ; print character in teletype mode:
         call lcd_delay
-	    MOV AL, 'a'
        	OUT LCD_DATA, AL
 ; update index register by 1:
         inc     si
@@ -45,7 +44,6 @@ end_printing:
 loop:
     jmp loop
     hlt
-
 
 msg db 'Hello, world!', 0
 
