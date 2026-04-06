@@ -9,4 +9,6 @@
         EXTERN init
 
 reset:
-        jmp init
+        jmp far [reset_jmp]
+
+reset_jmp: dw init, 0

@@ -12,10 +12,10 @@ set(TARGET_NAME ${PROJECT_NAME})
 include_directories(src)
 link_libraries(nosys c gcc)
 
-set(LINKER_SCRIPT ${CMAKE_CURRENT_LIST_DIR}/../../bare8086.ld)
+file(TO_NATIVE_PATH "${CMAKE_CURRENT_LIST_DIR}/../bare8086.ld" LINKER_SCRIPT)
 
 add_link_options(LINKER:-Map=${TARGET_NAME}.map LINKER:--oformat=elf32-i386 LINKER:--gc-sections -march=i8086 -ffreestanding -nostdlib -nodefaultlibs -nostartfiles -fno-use-cxa-atexit)
-add_link_options(-T "${LINKER_SCRIPT}")
+add_link_options(-T ${LINKER_SCRIPT})
 
 add_executable(${TARGET_NAME})
 target_sources(${TARGET_NAME} PRIVATE
