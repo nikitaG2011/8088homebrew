@@ -207,7 +207,7 @@ Disassembly of section .text:
 0000012d <lcd_init>:
  12d:	55                   	push   bp
  12e:	89 e5                	mov    bp,sp
- 130:	b8 d0 07             	mov    ax,0x7d0
+ 130:	b8 20 4e             	mov    ax,0x4e20
  133:	50                   	push   ax
  134:	16                   	push   ss
  135:	1f                   	pop    ds
@@ -216,7 +216,7 @@ Disassembly of section .text:
  13c:	16                   	push   ss
  13d:	1f                   	pop    ds
  13e:	e8 34 ff             	call   75 <text_lcd_function_set>
- 141:	b8 90 01             	mov    ax,0x190
+ 141:	b8 a0 0f             	mov    ax,0xfa0
  144:	50                   	push   ax
  145:	16                   	push   ss
  146:	1f                   	pop    ds
@@ -225,7 +225,7 @@ Disassembly of section .text:
  14d:	16                   	push   ss
  14e:	1f                   	pop    ds
  14f:	e8 23 ff             	call   75 <text_lcd_function_set>
- 152:	b8 0a 00             	mov    ax,0xa
+ 152:	b8 64 00             	mov    ax,0x64
  155:	50                   	push   ax
  156:	16                   	push   ss
  157:	1f                   	pop    ds
@@ -234,7 +234,7 @@ Disassembly of section .text:
  15e:	16                   	push   ss
  15f:	1f                   	pop    ds
  160:	e8 12 ff             	call   75 <text_lcd_function_set>
- 163:	b8 04 00             	mov    ax,0x4
+ 163:	b8 28 00             	mov    ax,0x28
  166:	50                   	push   ax
  167:	16                   	push   ss
  168:	1f                   	pop    ds
@@ -243,7 +243,7 @@ Disassembly of section .text:
  16f:	16                   	push   ss
  170:	1f                   	pop    ds
  171:	e8 01 ff             	call   75 <text_lcd_function_set>
- 174:	b8 04 00             	mov    ax,0x4
+ 174:	b8 28 00             	mov    ax,0x28
  177:	50                   	push   ax
  178:	16                   	push   ss
  179:	1f                   	pop    ds
@@ -259,7 +259,7 @@ Disassembly of section .text:
  18a:	1f                   	pop    ds
  18b:	e8 c5 fe             	call   53 <text_lcd_display_ctrl>
  18e:	83 c4 06             	add    sp,0x6
- 191:	b8 04 00             	mov    ax,0x4
+ 191:	b8 28 00             	mov    ax,0x28
  194:	50                   	push   ax
  195:	16                   	push   ss
  196:	1f                   	pop    ds
@@ -268,7 +268,7 @@ Disassembly of section .text:
  19d:	16                   	push   ss
  19e:	1f                   	pop    ds
  19f:	e8 8e fe             	call   30 <text_lcd_clear_display>
- 1a2:	b8 04 00             	mov    ax,0x4
+ 1a2:	b8 28 00             	mov    ax,0x28
  1a5:	50                   	push   ax
  1a6:	16                   	push   ss
  1a7:	1f                   	pop    ds
@@ -277,7 +277,7 @@ Disassembly of section .text:
  1ae:	16                   	push   ss
  1af:	1f                   	pop    ds
  1b0:	e8 82 fe             	call   35 <text_lcd_return_home>
- 1b3:	b8 96 00             	mov    ax,0x96
+ 1b3:	b8 dc 05             	mov    ax,0x5dc
  1b6:	50                   	push   ax
  1b7:	16                   	push   ss
  1b8:	1f                   	pop    ds
@@ -291,7 +291,7 @@ Disassembly of section .text:
  1c6:	1f                   	pop    ds
  1c7:	e8 70 fe             	call   3a <text_lcd_entry_mode_set>
  1ca:	83 c4 04             	add    sp,0x4
- 1cd:	b8 04 00             	mov    ax,0x4
+ 1cd:	b8 28 00             	mov    ax,0x28
  1d0:	50                   	push   ax
  1d1:	16                   	push   ss
  1d2:	1f                   	pop    ds
@@ -307,7 +307,7 @@ Disassembly of section .text:
  1e3:	1f                   	pop    ds
  1e4:	e8 6c fe             	call   53 <text_lcd_display_ctrl>
  1e7:	83 c4 06             	add    sp,0x6
- 1ea:	b8 04 00             	mov    ax,0x4
+ 1ea:	b8 28 00             	mov    ax,0x28
  1ed:	50                   	push   ax
  1ee:	16                   	push   ss
  1ef:	1f                   	pop    ds

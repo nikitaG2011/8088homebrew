@@ -8,25 +8,25 @@
 
 void lcd_init()
 {
-    delay(2000);
+    delay(20000);
     text_lcd_function_set();
-    delay(400);
+    delay(4000);
     text_lcd_function_set();
-    delay(10);
+    delay(100);
     text_lcd_function_set();
-    delay(4);
+    delay(40);
     text_lcd_function_set();
-    delay(4);
+    delay(40);
     text_lcd_display_ctrl(false, false, false);
-    delay(4);
+    delay(40);
     text_lcd_clear_display();
-    delay(4);
+    delay(40);
     text_lcd_return_home();
-    delay(150);
+    delay(1500);
     text_lcd_entry_mode_set(true, false);
-    delay(4);
+    delay(40);
     text_lcd_display_ctrl(true, false, false);
-    delay(4);
+    delay(40);
 }
 
 void main()
