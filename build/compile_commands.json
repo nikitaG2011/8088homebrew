@@ -1,8 +1,0 @@
-[
-{
-  "directory": "C:/Users/LNair/Documents/GitHub/8088homebrew/build",
-  "command": "C:/tools/ia16-elf/bin/ia16-elf-gcc.exe  -IC:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src -g -std=gnu11 -march=i8086 -mtune=i8086 -mcmodel=small -o CMakeFiles/part05_2.dir/src/main.c.obj -c C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src/main.c",
-  "file": "C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src/main.c",
-  "output": "CMakeFiles/part05_2.dir/src/main.c.obj"
-}
-]
