@@ -15,39 +15,58 @@ init:
 
         push cs
         pop es
+        mov di, 0x55 * 4
+        mov ax, INT_handler
+        stosw
+        mov ax, cs
+        stosw
+        call lcd_start
+        sti
+    
 code:
-
-    call lcd_start
-; set the index register:
-        mov     si, 0
-
-next_char:
-
-; get current character:
-        mov     al, msg[si]
-; is it zero?
-; if so stop printing:
-        cmp     al, 0           
-        je      end_printing
-
-; print character in teletype mode:
+        call lcd_delay  
+        mov al, 'p'
+        out LCD_DATA, al
+        call lcd_delay       
+        mov al, 'e'
+        out LCD_DATA, al
         call lcd_delay
-       	OUT LCD_DATA, AL
-; update index register by 1:
-        inc     si
+        mov al, 'e'
+        out LCD_DATA, al
 
-; go back to print another char:
-        jmp     next_char
 
-end_printing:
 
-loop:
-    jmp loop
-    hlt
+hang:
+        jmp hang
+        
 
-msg db 'Hello, world!', 0
+    
 
+;interupt handler
+INT_handler:
+        push ax
+
+        call lcd_delay
+        
+        mov al, 'i'
+        out LCD_DATA, al
+        
+        call lcd_delay
+
+        mov al, 'n'
+        out LCD_DATA, al
+                
+        pop ax
+        iret 
+
+
+
+;include things here
 %include "functions.asm"
+
+
+
+
     ; end of code space
     times 32752 - ($ - $$) db 0x90
 reset_vector:
