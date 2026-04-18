@@ -55,7 +55,9 @@ INT_handler:
 
         mov al, 'n'
         out LCD_DATA, al
-                
+
+        hlt
+          
         pop ax
         iret 
 
