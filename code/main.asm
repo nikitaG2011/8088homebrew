@@ -13,9 +13,9 @@ init:
         mov ss, ax
         xor sp, sp
 
-        push cs
-        pop es
-        mov di, 0x55 * 4
+        xor ax, ax
+        mov es, ax
+        mov di, 0xAA * 4
         mov ax, INT_handler
         stosw
         mov ax, cs
@@ -33,6 +33,7 @@ code:
         call lcd_delay
         mov al, 'e'
         out LCD_DATA, al
+        int 0xAA
 
 
 
@@ -42,24 +43,20 @@ hang:
 
     
 
-;interupt handler
+;interrupt handler
 INT_handler:
         push ax
 
         call lcd_delay
-        
         mov al, 'i'
         out LCD_DATA, al
-        
-        call lcd_delay
 
+        call lcd_delay
         mov al, 'n'
         out LCD_DATA, al
 
-        hlt
-          
         pop ax
-        iret 
+        iret
 
 
 
