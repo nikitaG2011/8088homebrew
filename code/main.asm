@@ -5,8 +5,8 @@ ORG 0x8000
 
 
 
-LCD_CMD     EQU 0x00
-LCD_DATA    EQU 0x01
+TV_TXT     EQU 0x00
+
 
 init:
         mov ax, 0x7000
@@ -20,19 +20,16 @@ init:
         stosw
         mov ax, cs
         stosw
-        call lcd_start
         sti
     
 code:
-        call lcd_delay  
+
         mov al, 'p'
-        out LCD_DATA, al
-        call lcd_delay       
+        out TV_TXT, al
         mov al, 'e'
-        out LCD_DATA, al
-        call lcd_delay
+        out TV_TXT, al
         mov al, 'e'
-        out LCD_DATA, al
+        out TV_TXT, al
         int 0xAA
 
 
@@ -47,13 +44,11 @@ hang:
 INT_handler:
         push ax
 
-        call lcd_delay
-        mov al, 'i'
-        out LCD_DATA, al
 
-        call lcd_delay
+        mov al, 'i'
+        out TV_TXT, al
         mov al, 'n'
-        out LCD_DATA, al
+        out TV_TXT, al
 
         pop ax
         iret

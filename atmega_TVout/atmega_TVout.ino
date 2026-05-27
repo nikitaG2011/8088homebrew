@@ -26,7 +26,7 @@ void setup() {
   attachInterrupt(
     digitalPinToInterrupt(2),
     dataInterrupt,
-    RISING
+    HIGH
   );
 
   TV.begin(_NTSC, 184, 72);
