@@ -5,7 +5,7 @@ ORG 0x8000
 
 
 
-TV_TXT     EQU 0x00
+RT_TXT     EQU 0x00
 
 
 init:
@@ -25,11 +25,11 @@ init:
 code:
 
         mov al, 'p'
-        out TV_TXT, al
+        out RT_TXT, al
         mov al, 'e'
-        out TV_TXT, al
+        out RT_TXT, al
         mov al, 'e'
-        out TV_TXT, al
+        out RT_TXT, al
         int 0xAA
 
 
@@ -46,9 +46,9 @@ INT_handler:
 
 
         mov al, 'i'
-        out TV_TXT, al
+        out RT_TXT, al
         mov al, 'n'
-        out TV_TXT, al
+        out RT_TXT, al
 
         pop ax
         iret
