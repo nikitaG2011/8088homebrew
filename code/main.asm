@@ -24,8 +24,13 @@ init:
     
 code:
         int 0xAA
-        mov al, 0xFF
-        out RT_TXT, al
+        mov al, 1
+        out RT_TXT, al 
+        looop:
+        mov dl, al 
+        add al, dl
+        out RT_TXT, al 
+        jmp looop 
 
 
 
@@ -38,8 +43,6 @@ hang:
 ;interrupt handler
 INT_handler:
         push ax
-        mov al, 0xAA
-        out RT_TXT, al 
         pop ax
         iret
 
