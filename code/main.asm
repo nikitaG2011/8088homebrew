@@ -23,14 +23,9 @@ init:
         sti
     
 code:
-
-        mov al, 'p'
-        out RT_TXT, al
-        mov al, 'e'
-        out RT_TXT, al
-        mov al, 'e'
-        out RT_TXT, al
         int 0xAA
+        mov al, 0xFF
+        out RT_TXT, al
 
 
 
@@ -43,13 +38,8 @@ hang:
 ;interrupt handler
 INT_handler:
         push ax
-
-
-        mov al, 'i'
-        out RT_TXT, al
-        mov al, 'n'
-        out RT_TXT, al
-
+        mov al, 0xAA
+        out RT_TXT, al 
         pop ax
         iret
 
