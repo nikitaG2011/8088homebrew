@@ -23,8 +23,7 @@ init:
         sti
     
 code:
-        int 0xAA
-        mov al, 1
+        mov al, 0x35
         out RT_TXT, al 
 
 
