@@ -26,11 +26,7 @@ code:
         int 0xAA
         mov al, 1
         out RT_TXT, al 
-        looop:
-        mov dl, al 
-        add al, dl
-        out RT_TXT, al 
-        jmp looop 
+
 
 
 

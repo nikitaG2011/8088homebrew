@@ -5,8 +5,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/part05_2.dir/src/main.c.obj.d"
   "CMakeFiles/part05_2.dir/src/reset.asm.obj"
   "CMakeFiles/part05_2.dir/src/reset.asm.obj.d"
-  "CMakeFiles/part05_2.dir/src/text_lcd.asm.obj"
-  "CMakeFiles/part05_2.dir/src/text_lcd.asm.obj.d"
   "CMakeFiles/part05_2.dir/src/utils.asm.obj"
   "CMakeFiles/part05_2.dir/src/utils.asm.obj.d"
   "part05_2"

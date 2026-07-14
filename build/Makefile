@@ -169,14 +169,6 @@ src/reset.asm.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/part05_2.dir/build.make CMakeFiles/part05_2.dir/src/reset.asm.obj
 .PHONY : src/reset.asm.obj
 
-src/text_lcd.obj: src/text_lcd.asm.obj
-.PHONY : src/text_lcd.obj
-
-# target to build an object file
-src/text_lcd.asm.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/part05_2.dir/build.make CMakeFiles/part05_2.dir/src/text_lcd.asm.obj
-.PHONY : src/text_lcd.asm.obj
-
 src/utils.obj: src/utils.asm.obj
 .PHONY : src/utils.obj
 
@@ -199,7 +191,6 @@ help:
 	@echo "... src/main.i"
 	@echo "... src/main.s"
 	@echo "... src/reset.obj"
-	@echo "... src/text_lcd.obj"
 	@echo "... src/utils.obj"
 .PHONY : help
 

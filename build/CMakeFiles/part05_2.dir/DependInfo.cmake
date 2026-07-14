@@ -10,7 +10,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src/init.asm" "CMakeFiles/part05_2.dir/src/init.asm.obj" "gcc" "CMakeFiles/part05_2.dir/src/init.asm.obj.d"
   "C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src/reset.asm" "CMakeFiles/part05_2.dir/src/reset.asm.obj" "gcc" "CMakeFiles/part05_2.dir/src/reset.asm.obj.d"
-  "C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src/text_lcd.asm" "CMakeFiles/part05_2.dir/src/text_lcd.asm.obj" "gcc" "CMakeFiles/part05_2.dir/src/text_lcd.asm.obj.d"
   "C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src/utils.asm" "CMakeFiles/part05_2.dir/src/utils.asm.obj" "gcc" "CMakeFiles/part05_2.dir/src/utils.asm.obj.d"
   "C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src/main.c" "CMakeFiles/part05_2.dir/src/main.c.obj" "gcc" "CMakeFiles/part05_2.dir/src/main.c.obj.d"
   )

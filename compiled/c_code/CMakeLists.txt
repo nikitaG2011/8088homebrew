@@ -21,7 +21,6 @@ add_executable(${TARGET_NAME})
 target_sources(${TARGET_NAME} PRIVATE
     src/reset.asm
     src/init.asm
-    src/text_lcd.asm
     src/utils.asm
     src/main.c
 )

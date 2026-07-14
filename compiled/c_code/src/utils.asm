@@ -6,6 +6,7 @@
         SECTION .text
 
         GLOBAL delay
+        GLOBAL portout
 
 ;--------------------------------------
 ; void delay(uint16_t steps)
@@ -21,4 +22,14 @@ delay:
         mov sp, bp
         pop bp
         ret
+
+portout:
+        push bp
+        mov bp, sp
+
+        mov al, [bp + 4]
+        out 0, al 
+
+        pop bp
+        ret 
 

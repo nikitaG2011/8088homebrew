@@ -17,7 +17,7 @@ init:
         mov ax, SYSTEM_STACK_SEG
         mov ss, ax
         xor sp, sp
-        mov es, ax
+        mov es, ax   
 
         mov ax, cs
         mov ds, ax

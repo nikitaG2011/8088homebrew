@@ -84,22 +84,16 @@ CMakeFiles/part05_2.dir/src/init.asm.obj: CMakeFiles/part05_2.dir/compiler_depen
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/LNair/Documents/GitHub/8088homebrew/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building ASM_NASM object CMakeFiles/part05_2.dir/src/init.asm.obj"
 	C:/Users/LNair/AppData/Local/bin/NASM/nasm.exe $(ASM_NASM_DEFINES) $(ASM_NASM_INCLUDES) $(ASM_NASM_FLAGS) -MD CMakeFiles/part05_2.dir/src/init.asm.obj.d -MT CMakeFiles/part05_2.dir/src/init.asm.obj -f elf -o CMakeFiles/part05_2.dir/src/init.asm.obj C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src/init.asm
 
-CMakeFiles/part05_2.dir/src/text_lcd.asm.obj: CMakeFiles/part05_2.dir/flags.make
-CMakeFiles/part05_2.dir/src/text_lcd.asm.obj: C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src/text_lcd.asm
-CMakeFiles/part05_2.dir/src/text_lcd.asm.obj: CMakeFiles/part05_2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/LNair/Documents/GitHub/8088homebrew/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building ASM_NASM object CMakeFiles/part05_2.dir/src/text_lcd.asm.obj"
-	C:/Users/LNair/AppData/Local/bin/NASM/nasm.exe $(ASM_NASM_DEFINES) $(ASM_NASM_INCLUDES) $(ASM_NASM_FLAGS) -MD CMakeFiles/part05_2.dir/src/text_lcd.asm.obj.d -MT CMakeFiles/part05_2.dir/src/text_lcd.asm.obj -f elf -o CMakeFiles/part05_2.dir/src/text_lcd.asm.obj C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src/text_lcd.asm
-
 CMakeFiles/part05_2.dir/src/utils.asm.obj: CMakeFiles/part05_2.dir/flags.make
 CMakeFiles/part05_2.dir/src/utils.asm.obj: C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src/utils.asm
 CMakeFiles/part05_2.dir/src/utils.asm.obj: CMakeFiles/part05_2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/LNair/Documents/GitHub/8088homebrew/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building ASM_NASM object CMakeFiles/part05_2.dir/src/utils.asm.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/LNair/Documents/GitHub/8088homebrew/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building ASM_NASM object CMakeFiles/part05_2.dir/src/utils.asm.obj"
 	C:/Users/LNair/AppData/Local/bin/NASM/nasm.exe $(ASM_NASM_DEFINES) $(ASM_NASM_INCLUDES) $(ASM_NASM_FLAGS) -MD CMakeFiles/part05_2.dir/src/utils.asm.obj.d -MT CMakeFiles/part05_2.dir/src/utils.asm.obj -f elf -o CMakeFiles/part05_2.dir/src/utils.asm.obj C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src/utils.asm
 
 CMakeFiles/part05_2.dir/src/main.c.obj: CMakeFiles/part05_2.dir/flags.make
 CMakeFiles/part05_2.dir/src/main.c.obj: C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src/main.c
 CMakeFiles/part05_2.dir/src/main.c.obj: CMakeFiles/part05_2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/LNair/Documents/GitHub/8088homebrew/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/part05_2.dir/src/main.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/LNair/Documents/GitHub/8088homebrew/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/part05_2.dir/src/main.c.obj"
 	C:/tools/ia16-elf/bin/ia16-elf-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/part05_2.dir/src/main.c.obj -MF CMakeFiles/part05_2.dir/src/main.c.obj.d -o CMakeFiles/part05_2.dir/src/main.c.obj -c C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/src/main.c
 
 CMakeFiles/part05_2.dir/src/main.c.i: cmake_force
@@ -114,7 +108,6 @@ CMakeFiles/part05_2.dir/src/main.c.s: cmake_force
 part05_2_OBJECTS = \
 "CMakeFiles/part05_2.dir/src/reset.asm.obj" \
 "CMakeFiles/part05_2.dir/src/init.asm.obj" \
-"CMakeFiles/part05_2.dir/src/text_lcd.asm.obj" \
 "CMakeFiles/part05_2.dir/src/utils.asm.obj" \
 "CMakeFiles/part05_2.dir/src/main.c.obj"
 
@@ -123,11 +116,10 @@ part05_2_EXTERNAL_OBJECTS =
 
 part05_2: CMakeFiles/part05_2.dir/src/reset.asm.obj
 part05_2: CMakeFiles/part05_2.dir/src/init.asm.obj
-part05_2: CMakeFiles/part05_2.dir/src/text_lcd.asm.obj
 part05_2: CMakeFiles/part05_2.dir/src/utils.asm.obj
 part05_2: CMakeFiles/part05_2.dir/src/main.c.obj
 part05_2: CMakeFiles/part05_2.dir/build.make
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/LNair/Documents/GitHub/8088homebrew/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable part05_2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/LNair/Documents/GitHub/8088homebrew/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable part05_2"
 	C:/tools/ia16-elf/bin/ia16-elf-gcc.exe -g -Wl,-Map=part05_2.map -Wl,--oformat=elf32-i386 -Wl,--gc-sections -march=i8086 -ffreestanding -nostdlib -nodefaultlibs -nostartfiles -fno-use-cxa-atexit -T C:/Users/LNair/Documents/GitHub/8088homebrew/compiled/c_code/../bare8086.ld $(part05_2_OBJECTS) $(part05_2_EXTERNAL_OBJECTS) -o part05_2  -lnosys -lc -lgcc
 	C:/tools/ia16-elf/bin/ia16-elf-objcopy.exe -I elf32-little -O binary part05_2 part05_2.bin
 	C:/tools/ia16-elf/bin/ia16-elf-objdump.exe -d -S -m i8086 -M i8086,intel,intel-mnemonic part05_2 > part05_2.lst
