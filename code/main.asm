@@ -22,26 +22,12 @@ init:
         stosw
         sti
     
-code:
-; Example 8088 Assembly Initialization for 65C51 at I/O ports 300H-303H
-MOV DX, 0x03       ; Point to Control Register
-MOV AL, 0x1F        ; 19200 baud, 8 bits, 1 stop bit
-OUT DX, AL          ; Send configuration
 
-MOV DX, 0x02       ; Point to Command Register
-MOV AL, 0x0B        ; Normal operation, no parity, no echo, no tx/rx int
-OUT DX, AL
-CheckTx:
-  MOV DX, 0x01     ; Status register
-  IN AL, DX
-  TEST AL, 0x10      ; Test bit 4 (TDRE)
-  JZ CheckTx        ; Loop until empty
-  
-  MOV DX, 0x00     ; Data register
-  MOV AL, 'A'       ; Character to send
-  OUT DX, AL
+print:
+	mov al, 'A'
+	out 0x00, al
 
-
+	jmp print
 
 hang:
         jmp hang
