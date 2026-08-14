@@ -23,10 +23,10 @@ init:
         sti
     
 code:
-        int 0xAA
-        mov al, 1
+        mov al, 0xAA
         out RT_TXT, al 
-
+        call subroutine
+        jmp code
 
 
 
@@ -35,7 +35,10 @@ hang:
         
 
     
-
+subroutine:
+        mov al, 0x55
+        out RT_TXT, al 
+        ret
 ;interrupt handler
 INT_handler:
         push ax
