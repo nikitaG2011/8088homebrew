@@ -4,9 +4,8 @@ BITS 16
 ORG 0x8000
 
 
-
-RT_TXT     EQU 0x00
-
+LCD_CMD     EQU 0x00
+LCD_DATA    EQU 0x01
 
 init:
         mov ax, 0x7000
@@ -23,22 +22,26 @@ init:
         sti
     
 code:
-        mov al, 0xAA
-        out RT_TXT, al 
-        call subroutine
-        jmp code
+        call lcd_delay
+        mov al, 'T'
+        out LCD_DATA, al
 
+        call lcd_delay
+        mov al, 'E'
+        out LCD_DATA, al
 
+        call lcd_delay
+        mov al, 'S'
+        out LCD_DATA, al
+
+        call lcd_delay
+        mov al, 'T'
+        out LCD_DATA, al
 
 hang:
         jmp hang
         
 
-    
-subroutine:
-        mov al, 0x55
-        out RT_TXT, al 
-        ret
 ;interrupt handler
 INT_handler:
         push ax
