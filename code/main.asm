@@ -23,6 +23,13 @@ init:
     
 code:  
 
+        call LCD_DELAY
+        mov al, 0x30
+        out LCD_CMD, al
+
+        call LCD_DELAY
+        mov al, 0x30
+        out LCD_CMD, al
 
         mov al, 0x38
         call LCD_CHECK
