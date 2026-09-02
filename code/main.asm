@@ -4,8 +4,9 @@ BITS 16
 ORG 0x8000
 
 
-LCD_CMD     EQU 0x00
-LCD_DATA    EQU 0x01
+
+
+
 
 init:
         mov ax, 0x7000
@@ -14,7 +15,7 @@ init:
 
         xor ax, ax
         mov es, ax
-        mov di, 0xAA * 4
+        mov di, 0x80 * 4
         mov ax, INT_handler
         stosw
         mov ax, cs
@@ -22,15 +23,23 @@ init:
         sti
     
 
-print:
-	mov al, 'A'
-	out 0x00, al
+CODE:
+	MOV AL, 0x55
+        OUT 0, AL
+        
+        CALL DELAY_500ms
 
-	jmp print
+        MOV AL, 0xAA
+        OUT 0, AL
+
+        CALL DELAY_500ms
+
+        JMP CODE
+        
+
 
 hang:
         jmp hang
-        
 
 ;interrupt handler
 INT_handler:
