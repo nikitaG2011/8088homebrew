@@ -4,8 +4,9 @@ BITS 16
 ORG 0x8000
 
 
-LCD_CMD     EQU 0x00
-LCD_DATA    EQU 0x01
+
+
+
 
 init:
         mov ax, 0x7000
@@ -14,59 +15,24 @@ init:
 
         xor ax, ax
         mov es, ax
-        mov di, 0xAA * 4
+        mov di, 0x80 * 4
         mov ax, INT_handler
         stosw
         mov ax, cs
         stosw
         sti
     
-code:  
 
-        call LCD_DELAY
-        mov al, 0x30
-        out LCD_CMD, al
+CODE:
+	CALL KEYPAD_CHECK
 
-        call LCD_DELAY
-        mov al, 0x30
-        out LCD_CMD, al
-
-        mov al, 0x38
-        call LCD_CHECK
-        out LCD_CMD, al
-
-        mov al, 0x0C
-        call LCD_CHECK
-        out LCD_CMD, al
-
-        mov al, 0x01
-        call LCD_CHECK
-        out LCD_CMD, al
-
-        mov al, 0x06
-        call LCD_CHECK
-        out LCD_CMD, al
-
-        mov al, 'T'
-        call LCD_CHECK
-        out LCD_DATA, al
-
-        mov al, 'E'
-        call LCD_CHECK
-        out LCD_DATA, al
+        JMP CODE
         
-        mov al, 'S'
-        call LCD_CHECK
-        out LCD_DATA, al
-        
-        mov al, 'T'
-        call LCD_CHECK
-        out LCD_DATA, al
-        
-        jmp $
+
+
 hang:
         jmp hang
-        
+
 
 ;interrupt handler
 INT_handler:
