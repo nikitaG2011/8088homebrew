@@ -4,9 +4,8 @@ BITS 16
 ORG 0x8000
 
 
-
-RT_TXT     EQU 0x00
-
+LCD_CMD     EQU 0x00
+LCD_DATA    EQU 0x01
 
 init:
         mov ax, 0x7000
@@ -33,11 +32,6 @@ hang:
         jmp hang
         
 
-    
-subroutine:
-        mov al, 0x55
-        out RT_TXT, al 
-        ret
 ;interrupt handler
 INT_handler:
         push ax
