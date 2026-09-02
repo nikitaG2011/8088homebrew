@@ -24,15 +24,7 @@ init:
     
 
 CODE:
-	MOV AL, 0x55
-        OUT 0, AL
-        
-        CALL DELAY_500ms
-
-        MOV AL, 0xAA
-        OUT 0, AL
-
-        CALL DELAY_500ms
+	CALL KEYPAD_CHECK
 
         JMP CODE
         
@@ -40,6 +32,7 @@ CODE:
 
 hang:
         jmp hang
+
 
 ;interrupt handler
 INT_handler:
