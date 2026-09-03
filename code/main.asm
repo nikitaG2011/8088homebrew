@@ -16,28 +16,24 @@ init:
         xor ax, ax
         mov es, ax
         mov di, 0x80 * 4
-        mov ax, INT_handler
+        mov ax, INT80
         stosw
         mov ax, cs
         stosw
         sti
-    
 
-CODE:
-	CALL KEYPAD_CHECK
-
-        JMP CODE
-        
-
+        MOV AL, 0x0
+        OUT 0x00, AL
 
 hang:
         jmp hang
 
 
 ;interrupt handler
-INT_handler:
-        push ax
-        pop ax
+INT80:
+        ADD AL, 0x1
+        OUT 0x00, AL
+
         iret
 
 
