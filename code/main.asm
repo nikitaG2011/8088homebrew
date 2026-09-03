@@ -25,8 +25,12 @@ init:
         MOV AL, 0x0
         OUT 0x00, AL
 
-hang:
+hang:   
+        ADD AL, 0x1
+        OUT 0x00, AL
+        call DELAY_500ms
         jmp hang
+        
 
 
 ;interrupt handler
