@@ -4,7 +4,8 @@ BITS 16
 ORG 0x8000
 
 
-
+USART_DATA    equ 00H           ; Data Port (A0 = 0)
+USART_CTRL    equ 01H           ; Control/Status Port (A0 = 1)
 
 
 
@@ -21,23 +22,26 @@ init:
         mov ax, cs
         stosw
         sti
+        CALL init_usart
 
-        MOV AL, 0x0
-        OUT 0x00, AL
+code:   
+        MOV AL, 'A'
+        call send_char
+        mov al, 0DH                 ; Carriage Return
+        call send_char
+        mov al, 0AH                 ; Line Feed
+        call send_char
 
-hang:   
-        ADD AL, 0x1
-        OUT 0x00, AL
-        call DELAY_500ms
-        jmp hang
+        mov cx, 0xFFFF
+.delay:
+        loop .delay
+
+        JMP code
         
 
 
 ;interrupt handler
 INT80:
-        ADD AL, 0x1
-        OUT 0x00, AL
-
         iret
 
 
