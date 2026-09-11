@@ -22,19 +22,19 @@ init:
         mov ax, cs
         stosw
         sti
-        CALL init_usart
 
+        MOV DX, 0x0010
 code:   
-        MOV AL, 'A'
-        call send_char
-        mov al, 0DH                 ; Carriage Return
-        call send_char
-        mov al, 0AH                 ; Line Feed
-        call send_char
+        
+        MOV AL, 0xAA
+        OUT DX, AL
 
-        mov cx, 0xFFFF
-.delay:
-        loop .delay
+        CALL DELAY_500ms
+
+        MOV AL, 0x55
+        OUT DX, AL
+
+        CALL DELAY_500ms
 
         JMP code
         
