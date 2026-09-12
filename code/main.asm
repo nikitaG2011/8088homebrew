@@ -25,16 +25,22 @@ init:
         CALL init_usart
 
 code:   
+
         MOV AL, 'A'
+        out 0x0010, al
         call send_char
-        mov al, 0DH                 ; Carriage Return
         call send_char
-        mov al, 0AH                 ; Line Feed
+        call send_char
+        call send_char
+        call send_char
+        call send_char
+        call send_char
+        call send_char
+        call send_char
+        call send_char
         call send_char
 
-        mov cx, 0xFFFF
-.delay:
-        loop .delay
+
 
         JMP code
         
