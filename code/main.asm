@@ -47,12 +47,6 @@ code:
 
 ;interrupt handler
 INT80:
-        push ax
-        mov al, 'c'
-        out 0x00, al
-        in al, 0x00
-        out 0x00, al
-        pop ax
         iret
 
 
