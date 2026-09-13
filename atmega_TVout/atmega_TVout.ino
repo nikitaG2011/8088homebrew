@@ -1,62 +1,54 @@
-volatile byte rxChar = 0;
-volatile bool charReady = false;
+volatile byte receivedByte = 0;
+volatile bool charAvailable = false;
 
 void setup() {
   Serial.begin(9600);
-  // 8-bit data bus
 
-  pinMode(3, INPUT);
-  pinMode(4, INPUT);
-  pinMode(5, INPUT);
-  pinMode(6, INPUT);
+  // PORTA = 8-bit bidirectional bus
+  DDRA = 0x00;
 
-  pinMode(7, INPUT);
-  pinMode(8, INPUT);
-  pinMode(9, INPUT);
-  pinMode(10, INPUT);
-
-  // STROBE interrupt pin
-  pinMode(2, INPUT);
-
-  attachInterrupt(
-    digitalPinToInterrupt(2),
-    dataInterrupt,
-    RISING
-  );
-  Serial.print("text output V1.0");
-  Serial.println("");
-
-
+  // A1 = register select
+  pinMode(3, INPUT_PULLUP);   // RD
+  pinMode(4, INPUT_PULLUP);   // WR
+  pinMode(5, INPUT_PULLUP);   // A1
 }
 
 void loop() {
 
-  if (charReady) {
-
-    noInterrupts();
-
-    byte c = rxChar;
-    charReady = false;
-
-    interrupts();
-
-    Serial.print((char)c);
+  // Receive character from PC
+  if (Serial.available()) {
+    receivedByte = Serial.read();
+    charAvailable = true;
   }
-}
 
-void dataInterrupt() {
+  // ----------------------------
+  // 80C88 READ
+  // ----------------------------
 
-  rxChar = 0;
+  if (digitalRead(3) == LOW) {       // RD\ active
 
-  rxChar |= digitalRead(3)  << 0;
-  rxChar |= digitalRead(4)  << 1;
-  rxChar |= digitalRead(5)  << 2;
-  rxChar |= digitalRead(6)  << 3;
+    if (digitalRead(5) == HIGH) {
+      // A1 = 1 -> STATUS REGISTER
 
-  rxChar |= digitalRead(7)  << 4;
-  rxChar |= digitalRead(8) << 5;
-  rxChar |= digitalRead(9) << 6;
-  rxChar |= digitalRead(10) << 7;
+      DDRA = 0xFF;
 
-  charReady = true;
+      if (charAvailable)
+        PORTA = 0x01;
+      else
+        PORTA = 0x00;
+    }
+    else {
+      // A1 = 0 -> DATA REGISTER
+
+      DDRA = 0xFF;
+      PORTA = receivedByte;
+    }
+
+    // Wait for RD\ to finish
+    while (digitalRead(3) == LOW) {
+    }
+
+    // Release bus
+    DDRA = 0x00;
+  }
 }

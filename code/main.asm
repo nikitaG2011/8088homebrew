@@ -23,18 +23,22 @@ init:
         stosw
         sti
 
-        MOV DX, 0x0010
+
 code:   
         
-        MOV AL, 0xAA
-        OUT DX, AL
+        MOV AL, 'A'
 
+
+        OUT 0x00, AL
+        
+        CALL DELAY_500ms
+        MOV AL, 'B'
+   
+        OUT 0x00, AL
         CALL DELAY_500ms
 
-        MOV AL, 0x55
-        OUT DX, AL
 
-        CALL DELAY_500ms
+
 
         JMP code
         
