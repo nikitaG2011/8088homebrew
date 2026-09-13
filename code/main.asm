@@ -14,6 +14,9 @@ init:
         mov ss, ax
         xor sp, sp
 
+        mov ax, cs
+        mov ds, ax
+
         xor ax, ax
         mov es, ax
         mov di, 0x80 * 4
@@ -24,38 +27,16 @@ init:
         sti
 
 
-        MOV DX, 0x0010
+
 code:   
         
-        MOV AL, 'H'
-        CALL send_char
-        MOV AL, 'E'
-        CALL send_char
-        MOV AL, 'L'
-        CALL send_char
-        MOV AL, 'L'
-        CALL send_char
-        MOV AL, 'O'
-        CALL send_char
-        MOV AL, '_'
-        CALL send_char
-        MOV AL, 'W'
-        CALL send_char
-        MOV AL, 'O'
-        CALL send_char
-        MOV AL, 'R'
-        CALL send_char
-        MOV AL, 'L'
-        CALL send_char
-        MOV AL, 'D'
-        CALL send_char
-        MOV AL, 0x0A
-        CALL send_char
+        MOV SI,  MSG 
+        CALL PRINT_STRING
 
 
         HLT
         
-
+MSG DB 'HELLO_WORLD',0x0A, 0
 
 ;interrupt handler
 INT80:
@@ -65,6 +46,8 @@ INT80:
 
 ;include things here
 %include "functions.asm"
+
+
 
 
     ; end of code space
