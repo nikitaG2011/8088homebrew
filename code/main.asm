@@ -24,23 +24,36 @@ init:
         sti
 
 
+        MOV DX, 0x0010
 code:   
         
-        MOV AL, 'A'
+        MOV AL, 'H'
+        CALL send_char
+        MOV AL, 'E'
+        CALL send_char
+        MOV AL, 'L'
+        CALL send_char
+        MOV AL, 'L'
+        CALL send_char
+        MOV AL, 'O'
+        CALL send_char
+        MOV AL, '_'
+        CALL send_char
+        MOV AL, 'W'
+        CALL send_char
+        MOV AL, 'O'
+        CALL send_char
+        MOV AL, 'R'
+        CALL send_char
+        MOV AL, 'L'
+        CALL send_char
+        MOV AL, 'D'
+        CALL send_char
+        MOV AL, 0x0A
+        CALL send_char
 
 
-        OUT 0x00, AL
-        
-        CALL DELAY_500ms
-        MOV AL, 'B'
-   
-        OUT 0x00, AL
-        CALL DELAY_500ms
-
-
-
-
-        JMP code
+        HLT
         
 
 
