@@ -24,21 +24,20 @@ init:
         sti
         CALL init_usart
 
-code:   
 
+code:   
+        
         MOV AL, 'A'
-        out 0x0010, al
-        call send_char
-        call send_char
-        call send_char
-        call send_char
-        call send_char
-        call send_char
-        call send_char
-        call send_char
-        call send_char
-        call send_char
-        call send_char
+
+
+        OUT 0x00, AL
+        
+        CALL DELAY_500ms
+        MOV AL, 'B'
+   
+        OUT 0x00, AL
+        CALL DELAY_500ms
+
 
 
 
@@ -48,6 +47,12 @@ code:
 
 ;interrupt handler
 INT80:
+        push ax
+        mov al, 'c'
+        out 0x00, al
+        in al, 0x00
+        out 0x00, al
+        pop ax
         iret
 
 
