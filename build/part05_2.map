@@ -1,6 +1,7 @@
 
 Discarded input sections
 
+ .data          0x0000000000000000        0x0 CMakeFiles/part05_2.dir/src/main.c.obj
  .bss           0x0000000000000000        0x2 CMakeFiles/part05_2.dir/src/main.c.obj
  .comment       0x0000000000000000       0x12 CMakeFiles/part05_2.dir/src/main.c.obj
 
@@ -22,7 +23,7 @@ LOAD c:/tools/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/../../../../ia16-elf/lib\li
 LOAD c:/tools/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/../../../../ia16-elf/lib\libc.a
 LOAD c:/tools/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0\libgcc.a
 
-.text           0x0000000000000000       0x5e
+.text           0x0000000000000000       0x79
  FILL mask 0x90
                 0x0000000000000000                __stext = .
  *(.startup)
@@ -31,16 +32,16 @@ LOAD c:/tools/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0\libgcc.a
  .text          0x0000000000000000       0x2c CMakeFiles/part05_2.dir/src/init.asm.obj
                 0x0000000000000000                init
  *fill*         0x000000000000002c        0x4 90
- .text          0x0000000000000030       0x17 CMakeFiles/part05_2.dir/src/utils.asm.obj
+ .text          0x0000000000000030       0x1d CMakeFiles/part05_2.dir/src/utils.asm.obj
                 0x0000000000000030                delay
-                0x000000000000003d                portout
- .text          0x0000000000000047       0x17 CMakeFiles/part05_2.dir/src/main.c.obj
-                0x0000000000000047                main
+                0x000000000000003d                print_char
+ .text          0x000000000000004d       0x2c CMakeFiles/part05_2.dir/src/main.c.obj
+                0x000000000000004d                main
  *(.text.*)
-                0x000000000000005e                __etext = .
+                0x0000000000000079                __etext = .
                 0x0000000000000001                ASSERT ((. <= 0x7ff0), Error: too large)
 
-.data           0x0000000000000000       0x10 load address 0x000000000000005e
+.data           0x0000000000000000       0x10 load address 0x0000000000000079
                 0x0000000000000000                __sdata = .
                 0x0000000000000000        0x2 SHORT 0x0
  *crtbegin*.o(.ctors)
@@ -54,16 +55,14 @@ LOAD c:/tools/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0\libgcc.a
  *(.rodata)
  *(.rodata.*)
  *(.data)
- .data          0x0000000000000002        0x1 CMakeFiles/part05_2.dir/src/main.c.obj
-                0x0000000000000002                data
  *(.data.*)
  *(.gcc_except_table)
  *(.gcc_except_table.*)
                 0x0000000000000010                . = ALIGN (0x10)
- *fill*         0x0000000000000003        0xd 
+ *fill*         0x0000000000000002        0xe 
                 0x0000000000000010                __edata = .
 
-.bss            0x0000000000000010        0x0 load address 0x000000000000006e
+.bss            0x0000000000000010        0x0 load address 0x0000000000000089
                 0x0000000000000010                __sbss = .
  *(.bss)
  *(.bss.*)
@@ -71,15 +70,15 @@ LOAD c:/tools/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0\libgcc.a
                 0x0000000000000010                . = ALIGN (0x10)
                 0x0000000000000010                __ebss = .
 
-.resetvec       0x000000000000005e       0x10 load address 0x0000000000007ff0
+.resetvec       0x0000000000000079       0x10 load address 0x0000000000007ff0
  FILL mask 0xff
  *(.reset)
- .reset         0x000000000000005e        0x8 CMakeFiles/part05_2.dir/src/reset.asm.obj
-                0x000000000000005e                reset
+ .reset         0x0000000000000079        0x8 CMakeFiles/part05_2.dir/src/reset.asm.obj
+                0x0000000000000079                reset
                 0x000000000000000f                . = 0xf
- *fill*         0x0000000000000066        0x7 ff
-                0x000000000000006d        0x1 BYTE 0xff
-                0x000000000000005e                __dataoffset = (LOADADDR (.data) - LOADADDR (.text))
+ *fill*         0x0000000000000081        0x7 ff
+                0x0000000000000088        0x1 BYTE 0xff
+                0x0000000000000079                __dataoffset = (LOADADDR (.data) - LOADADDR (.text))
                 0x0000000000000010                __ldata = (__edata - __sdata)
                 0x0000000000000000                __lbss = (__ebss - __sbss)
                 0x0000000000000010                __sheap = __ebss

@@ -42,7 +42,7 @@ ECHO:
 
 
         
-MSG DB 'HELLO_WORLD', 0x0D, 0x0A, 0
+MSG DB "HELLO_WORLD", 0x0D, 0x0A, 0
 
 ;interrupt handler
 INT80:

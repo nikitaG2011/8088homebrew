@@ -4,9 +4,12 @@
 
 #include "utils.h"
 
-int8_t data = 35;
 uint16_t i = 0;
 
 void main() {
-    portout(data);
+    cycle:
+    print_char('a');
+    delay(50);
+    print_char('b');
+
 }

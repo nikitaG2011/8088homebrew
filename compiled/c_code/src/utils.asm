@@ -6,7 +6,7 @@
         SECTION .text
 
         GLOBAL delay
-        GLOBAL portout
+        GLOBAL print_char
 
 ;--------------------------------------
 ; void delay(uint16_t steps)
@@ -23,12 +23,18 @@ delay:
         pop bp
         ret
 
-portout:
+print_char:
         push bp
         mov bp, sp
+        mov cx, 500
 
         mov al, [bp + 4]
         out 0, al 
+
+PRINT_DELAY:   
+        NOP 
+        LOOP PRINT_DELAY    
+
 
         pop bp
         ret 

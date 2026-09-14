@@ -11,7 +11,7 @@ Disassembly of section .text:
    7:	8e c0                	mov    es,ax
    9:	8c c8                	mov    ax,cs
    b:	8e d8                	mov    ds,ax
-   d:	be 5e 00             	mov    si,0x5e
+   d:	be 79 00             	mov    si,0x79
   10:	31 ff                	xor    di,di
   12:	b9 10 00             	mov    cx,0x10
   15:	f3 a5                	rep movs WORD PTR es:[di],WORD PTR ds:[si]
@@ -22,7 +22,7 @@ Disassembly of section .text:
   21:	8c d0                	mov    ax,ss
   23:	8e d8                	mov    ds,ax
   25:	8e c0                	mov    es,ax
-  27:	e8 1d 00             	call   47 <main>
+  27:	e8 23 00             	call   4d <main>
   2a:	eb fe                	jmp    2a <__ebss+0x1a>
   2c:	90                   	nop
   2d:	90                   	nop
@@ -41,26 +41,43 @@ Disassembly of section .text:
   3b:	5d                   	pop    bp
   3c:	c3                   	ret
 
-0000003d <portout>:
+0000003d <print_char>:
   3d:	55                   	push   bp
   3e:	89 e5                	mov    bp,sp
-  40:	8a 46 04             	mov    al,BYTE PTR [bp+0x4]
-  43:	e6 00                	out    0x0,al
-  45:	5d                   	pop    bp
-  46:	c3                   	ret
+  40:	b9 f4 01             	mov    cx,0x1f4
+  43:	8a 46 04             	mov    al,BYTE PTR [bp+0x4]
+  46:	e6 00                	out    0x0,al
 
-00000047 <main>:
-  47:	55                   	push   bp
-  48:	89 e5                	mov    bp,sp
-  4a:	36 a0 02 00          	mov    al,ss:0x2
-  4e:	50                   	push   ax
-  4f:	16                   	push   ss
-  50:	1f                   	pop    ds
-  51:	e8 e9 ff             	call   3d <portout>
-  54:	83 c4 02             	add    sp,0x2
-  57:	90                   	nop
-  58:	89 ec                	mov    sp,bp
-  5a:	5d                   	pop    bp
-  5b:	16                   	push   ss
-  5c:	1f                   	pop    ds
-  5d:	c3                   	ret
+00000048 <PRINT_DELAY>:
+  48:	90                   	nop
+  49:	e2 fd                	loop   48 <PRINT_DELAY>
+  4b:	5d                   	pop    bp
+  4c:	c3                   	ret
+
+0000004d <main>:
+  4d:	55                   	push   bp
+  4e:	89 e5                	mov    bp,sp
+  50:	b0 61                	mov    al,0x61
+  52:	50                   	push   ax
+  53:	16                   	push   ss
+  54:	1f                   	pop    ds
+  55:	e8 e5 ff             	call   3d <print_char>
+  58:	83 c4 02             	add    sp,0x2
+  5b:	b8 32 00             	mov    ax,0x32
+  5e:	50                   	push   ax
+  5f:	16                   	push   ss
+  60:	1f                   	pop    ds
+  61:	e8 cc ff             	call   30 <delay>
+  64:	83 c4 02             	add    sp,0x2
+  67:	b0 62                	mov    al,0x62
+  69:	50                   	push   ax
+  6a:	16                   	push   ss
+  6b:	1f                   	pop    ds
+  6c:	e8 ce ff             	call   3d <print_char>
+  6f:	83 c4 02             	add    sp,0x2
+  72:	90                   	nop
+  73:	89 ec                	mov    sp,bp
+  75:	5d                   	pop    bp
+  76:	16                   	push   ss
+  77:	1f                   	pop    ds
+  78:	c3                   	ret

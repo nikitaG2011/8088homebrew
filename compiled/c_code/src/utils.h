@@ -5,4 +5,4 @@
 
 
 void delay(uint16_t steps);
-void portout(uint8_t value);
+void print_char(uint8_t value);
