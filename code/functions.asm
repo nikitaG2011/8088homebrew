@@ -27,7 +27,7 @@
 PRINT_CHAR:
     PUSH CX
     OUT 0x00, AL
-    MOV CX, 1000
+    MOV CX, 100
 PRINT_DELAY:
     
     NOP                 ; [3 T-states] No operation padding

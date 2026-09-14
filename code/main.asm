@@ -4,10 +4,6 @@ BITS 16
 ORG 0x8000
 
 
-USART_DATA    equ 00H           ; Data Port (A0 = 0)
-USART_CTRL    equ 01H           ; Control/Status Port (A0 = 1)
-
-
 
 init:
         mov ax, 0x7000
@@ -33,10 +29,20 @@ code:
         MOV SI,  MSG 
         CALL PRINT_STRING
 
+cycle:   
+        IN AL, 0x10
+        CMP AL, 0
+        JNZ ECHO
+        jmp cycle
 
-        HLT
+ECHO:   
+        CALL PRINT_CHAR
+        XOR AL, AL
+        JMP cycle
+
+
         
-MSG DB 'HELLO_WORLD',0x0A, 0
+MSG DB 'HELLO_WORLD', 0x0D, 0x0A, 0
 
 ;interrupt handler
 INT80:
