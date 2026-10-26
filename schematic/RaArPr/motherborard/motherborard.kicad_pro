@@ -666,7 +666,7 @@
       {
         "filename": "motherborard.kicad_sch",
         "name": "motherborard",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "51541b5a-a84a-40d3-8899-caea263c0830"
       }
     ],
     "used_designators": "",
@@ -675,7 +675,7 @@
   "sheets": [
     [
       "51541b5a-a84a-40d3-8899-caea263c0830",
-      "Root"
+      "motherborard"
     ]
   ],
   "text_variables": {},
