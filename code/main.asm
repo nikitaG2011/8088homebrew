@@ -6,37 +6,37 @@ ORG 0x8000
 
 
 init:
-        mov ax, 0x7000
-        mov ss, ax
-        xor sp, sp
+    mov ax, 0x7000
+    mov ss, ax
+    xor sp, sp
 
-        mov ax, cs
-        mov ds, ax
+    mov ax, cs
+    mov ds, ax
 
-        xor ax, ax
-        mov es, ax
-        mov di, 0x80 * 4
-        mov ax, INT80
-        stosw
-        mov ax, cs
-        stosw
-        sti
+    xor ax, ax
+    mov es, ax
+    mov di, 0x80 * 4
+    mov ax, INT80
+    stosw
+    mov ax, cs
+    stosw
+	sti
 
 
 
 code:   
-        
-        MOV SI,  MSG 
-        CALL PRINT_STRING
-
-		hlt
-
-        
-MSG DB "HELLO_WORLD", 0x0D, 0x0A, 0
-
+	mov al, 0x55
+	out 0, al 
+	call DELAY_500ms
+	mov al, 0xAA
+	out 0, al
+	call DELAY_500ms
+	jmp code 
+	
+	
 ;interrupt handler
 INT80:
-        iret
+    iret
 
 
 
