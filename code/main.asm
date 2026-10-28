@@ -3,7 +3,9 @@
 BITS 16
 ORG 0x8000
 
-
+usart_data 	equ 0x00
+usart_ctrl 	equ 0x01
+led_port	equ	0x10
 
 init:
     mov ax, 0x7000
@@ -21,17 +23,15 @@ init:
     mov ax, cs
     stosw
 	sti
-
-
-
-code:   
-	mov al, 0x55
-	out 0, al 
-	call DELAY_500ms
-	mov al, 0xAA
-	out 0, al
-	call DELAY_500ms
-	jmp code 
+	
+code:
+	mov		al,			0xAA
+	out 	led_port, 	al 
+	call	DELAY_500ms
+	mov		al,			0x55
+	out 	led_port, 	al
+	call	DELAY_500ms
+	jmp		code
 	
 	
 ;interrupt handler
