@@ -27,10 +27,6 @@ init:
 code:
 	mov		al,			0xAA
 	out 	led_port, 	al 
-	call	DELAY_500ms
-	mov		al,			0x55
-	out 	led_port, 	al
-	call	DELAY_500ms
 	jmp		code
 	
 	
