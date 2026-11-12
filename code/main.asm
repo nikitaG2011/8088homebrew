@@ -3,8 +3,8 @@
 BITS 16
 ORG 0x8000
 
-usart_data 	equ 0x00
-usart_ctrl 	equ 0x01
+lcd_cmd		equ 0x00
+lcd_data	equ 0x01
 led_port	equ	0x10
 
 init:
@@ -27,6 +27,7 @@ init:
 code:
 	mov		al,			0xAA
 	out 	led_port, 	al 
+	
 	jmp		code
 	
 	
@@ -38,7 +39,6 @@ INT80:
 
 ;include things here
 %include "functions.asm"
-
 
 
 
