@@ -29,17 +29,7 @@ code:
         MOV SI,  MSG 
         CALL PRINT_STRING
 
-cycle:   
-        IN AL, 0x10
-        CMP AL, 0
-        JNZ ECHO
-        jmp cycle
-
-ECHO:   
-        CALL PRINT_CHAR
-        XOR AL, AL
-        JMP cycle
-
+		hlt
 
         
 MSG DB "HELLO_WORLD", 0x0D, 0x0A, 0
