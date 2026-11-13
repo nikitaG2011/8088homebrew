@@ -3,46 +3,42 @@
 BITS 16
 ORG 0x8000
 
-
+lcd_cmd		equ 0x00
+lcd_data	equ 0x01
+led_port	equ	0x10
 
 init:
-        mov ax, 0x7000
-        mov ss, ax
-        xor sp, sp
+    mov ax, 0x7000
+    mov ss, ax
+    xor sp, sp
 
-        mov ax, cs
-        mov ds, ax
+    mov ax, cs
+    mov ds, ax
 
-        xor ax, ax
-        mov es, ax
-        mov di, 0x80 * 4
-        mov ax, INT80
-        stosw
-        mov ax, cs
-        stosw
-        sti
-
-
-
-code:   
-        
-        MOV SI,  MSG 
-        CALL PRINT_STRING
-
-		hlt
-
-        
-MSG DB "HELLO_WORLD", 0x0D, 0x0A, 0
-
+    xor ax, ax
+    mov es, ax
+    mov di, 0x80 * 4
+    mov ax, INT80
+    stosw
+    mov ax, cs
+    stosw
+	sti
+	
+code:
+	mov		al,			0xAA
+	out 	led_port, 	al 
+	
+	jmp		code
+	
+	
 ;interrupt handler
 INT80:
-        iret
+    iret
 
 
 
 ;include things here
 %include "functions.asm"
-
 
 
 
