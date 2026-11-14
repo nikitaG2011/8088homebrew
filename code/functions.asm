@@ -8,7 +8,7 @@ DELAY_LOOP:
         POP CX 
         RET   
 
-
+ 
 DELAY_LCD_LONG:
 		PUSH CX
 		MOV CX, 0x1198

@@ -23,6 +23,8 @@ init:
     mov ax, cs
     stosw
 	sti
+
+    call LCD_INIT
 	
 code:
 	mov		al,			0xAA
@@ -40,6 +42,8 @@ INT80:
 ;include things here
 %include "functions.asm"
 
+message:
+    db "hello, world", 0x00
 
 
     ; end of code space
