@@ -3,9 +3,9 @@
 BITS 16
 ORG 0x8000
 
-lcd_cmd		equ 0x00
-lcd_data	equ 0x01
-led_port	equ	0x10
+lcd_cmd		equ 0x30
+lcd_data	equ 0x31
+led_port	equ	0x00
 
 init:
     mov ax, 0x7000
@@ -29,6 +29,15 @@ init:
 code:
 	mov		al,			0xAA
 	out 	led_port, 	al 
+	
+	mov 	al, 		'h'
+	call LCD_PRINT
+	mov 	al, 		'e'
+	call LCD_PRINT
+	mov 	al, 		'l'
+	call LCD_PRINT
+	mov 	al, 		'o'
+	call LCD_PRINT
 	
 	jmp		code
 	
