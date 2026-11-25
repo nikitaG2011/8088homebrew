@@ -3,9 +3,9 @@
 BITS 16
 ORG 0x8000
 
-lcd_cmd		equ 0x30
-lcd_data	equ 0x31
-led_port	equ	0x00
+lcd_cmd		equ 0x0030
+lcd_data	equ 0x0031
+led_port	equ	0x0000
 
 init:
     mov ax, 0x7000
