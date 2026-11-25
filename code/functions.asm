@@ -1,64 +1,71 @@
 DELAY_500ms:
-        PUSH CX
-        MOV CX, 25000       ; [4 T-states] Initialize 16-bit loop counter
+    PUSH	CX
+    MOV		CX, 		25000       ; [4 T-states] Initialize 16-bit loop counter
 
 DELAY_LOOP:
-        NOP                 ; [3 T-states] No operation padding
-        LOOP DELAY_LOOP     ; [17 T-states if jump / 5 T-states if fall-through]
-        POP CX 
-        RET   
+    NOP                 ; [3 T-states] No operation padding
+    LOOP	DELAY_LOOP     ; [17 T-states if jump / 5 T-states if fall-through]
+    POP		CX 
+    RET   
 
  
 DELAY_LCD_LONG:
-		PUSH CX
-		MOV CX, 0x1198
+	PUSH	CX
+	MOV		CX, 		0x1198
 DELAY_LCD_LONG_LOOP:
-		NOP
-		LOOP DELAY_LCD_LONG_LOOP
-		POP CX
-		RET
+	NOP
+	LOOP	DELAY_LCD_LONG_LOOP
+	POP		CX
+	RET
 		
 DELAY_LCD:
-		PUSH CX
-		MOV CX, 0x53
+	PUSH	CX
+	MOV		CX, 		0x53
 DELAY_LCD_LOOP:
-		NOP 
-		LOOP DELAY_LCD_LOOP
-		POP CX 
-		RET
+	NOP 
+	LOOP	DELAY_LCD_LOOP
+	POP		CX 
+	RET
 		
 LCD_INIT:
 		
-		PUSH AX 
+	PUSH	AX 
 
-		MOV AL, 0x30
-		OUT lcd_cmd, AL
+	CALL	LCD_WAIT
+	MOV		AL, 		0x30
+	OUT		lcd_cmd,	AL
+	
+	CALL	LCD_WAIT
+	MOV		AL,	 		0x30
+	OUT		lcd_cmd, 	AL
 
-		MOV AL, 0x30
-		OUT lcd_cmd, AL
+	CALL	LCD_WAIT
+	MOV		AL, 		0x38
+	OUT		lcd_cmd, 	AL
+		
+	CALL	LCD_WAIT
+	MOV		AL, 		0x08
+	OUT		lcd_cmd, 	AL
+		
+	CALL	LCD_WAIT
+	MOV		AL, 		0x01
+	OUT		lcd_cmd, 	AL
+		
+	CALL	LCD_WAIT
+	MOV		AL, 		0x02
+	OUT		lcd_cmd, 	AL
 
-		MOV AL, 0x38
-		OUT lcd_cmd, AL
+	CALL	LCD_WAIT
+	MOV		AL, 		0x06
+	OUT		lcd_cmd, 	AL
 		
-		MOV AL, 0x08
-		OUT lcd_cmd, AL
+	CALL	LCD_WAIT
+	MOV		AL,			0x0C
+	OUT		lcd_cmd,	AL
 		
-		MOV AL, 0x01
-		OUT lcd_cmd, AL
+	POP		AX
 		
-		MOV AL, 0x02
-		OUT lcd_cmd, AL
-
-		MOV AL, 0x06
-		OUT lcd_cmd, AL
-		
-
-		MOV AL, 0x0C
-		OUT lcd_cmd, AL
-		
-		POP AX
-		
-		RET
+	RET
 	
 	
 LCD_PRINT:					;PRINTS A CHARACTER FROM AL TO THE LCD 
@@ -70,25 +77,25 @@ LCD_PRINT:					;PRINTS A CHARACTER FROM AL TO THE LCD
 LCD_PRINT_STRING:			;INPUT THE ADDRES OF THE STRING AT SI AND THE TERMINATOR IS 0x00
 	PUSH	AX
 LCD_PRINT_LOOP:
-	MOV	AL, 	[SI]
-	INC	SI
-	CMP	AL, 	0x00
-	JE	LCD_PRINT_EXIT
+	MOV		AL, 	[SI]
+	INC		SI
+	CMP		AL, 	0x00
+	JE		LCD_PRINT_EXIT
 		
 	CALL	LCD_PRINT
 		
 	JMP 	LCD_PRINT_LOOP
 		
 LCD_PRINT_EXIT:
-	POP	AX
+	POP		AX
 	RET
 		
 		
 LCD_WAIT:
 	PUSH	AX
 .POLL:
-	IN	AL,	LCD_STATUS
-	TEST AL, 0x80
-	JNZ .POLL
-	POP AX
+	INAL,	LCD_STATUS
+	TEST	AL, 0x80
+	JNZ		.POLL
+	POP		AX
 	RET

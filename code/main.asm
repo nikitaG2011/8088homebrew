@@ -39,7 +39,7 @@ code:
 	mov 	al, 		'o'
 	call LCD_PRINT
 	
-	jmp		code
+	HLT
 	
 	
 ;interrupt handler
